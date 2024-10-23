@@ -11,7 +11,7 @@ import (
 	"gorm.io/gorm"
 )
 
-func initGormDataBase() {
+func initGormDataBaseConnection() {
 	workingDir, e := os.Getwd()
 	if e != nil {
 		return
@@ -22,7 +22,7 @@ func initGormDataBase() {
 		panic("failed to connect database")
 	} else {
 		global.DT_DB = db
-		registerTables()
+
 	}
 
 }
@@ -36,5 +36,5 @@ func registerTables() {
 		global.DT_Logger.Error("register table failed", zap.Error(err))
 		os.Exit(0)
 	}
-	global.DT_Logger.Info("register table success")
+	//global.DT_Logger.Info("register table success")
 }

@@ -4,6 +4,7 @@ import (
 	"embed"
 
 	"dayz-tool/initialize"
+	"dayz-tool/service"
 
 	"github.com/wailsapp/wails/v2"
 	"github.com/wailsapp/wails/v2/pkg/options"
@@ -30,6 +31,7 @@ func main() {
 		OnStartup:        app.startup,
 		Bind: []interface{}{
 			app,
+			&service.ConfigService{},
 		},
 	})
 
