@@ -3,7 +3,14 @@
 </script>
 
 <template>
-    <div size-full>111</div>
+    <div size-full>
+        <!-- Header -->
+        <div w-full></div>
+        <!-- Content -->
+        <div>
+
+        </div>
+    </div>
 </template>
 
 <style scoped></style>

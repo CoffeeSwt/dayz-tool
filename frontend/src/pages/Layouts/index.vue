@@ -4,17 +4,20 @@ import Side from './Side.vue';
 </script>
 
 <template>
-    <div w-full h-screen flex>
-        <div w-40 flex-shrink-0 h-full>
-            <Side></Side>
-        </div>
-        <div flex-grow-1 h-40 flex flex-col>
+    <div w-full h-screen flex flex-col overflow-hidden class="bg-background text-primary-foreground">
+        <div w-full h-20 flex-shrink-0>
             <Header></Header>
-            <div>
+        </div>
+        <div flex-grow-1 overflow-auto flex>
+            <div w-50 h-full flex-shrink-0>
+                <Side></Side>
+            </div>
+            <div flex-grow-1>
                 <slot></slot>
             </div>
         </div>
     </div>
+
 </template>
 
 <style scoped></style>

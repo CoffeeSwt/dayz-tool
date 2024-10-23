@@ -1,12 +1,11 @@
 <script setup lang="ts">
-import { useColorMode } from '@vueuse/core'
-
-// Pass { disableTransition: false } to enable transitions
-const mode = useColorMode()
+import ThemeChangeButton from './components/ThemeChangeButton.vue'
 </script>
 
 <template>
-    <div size-full></div>
+    <div size-full flex items-center dragarea>
+        <ThemeChangeButton></ThemeChangeButton>
+    </div>
 </template>
 
 <style scoped></style>
