@@ -5,3 +5,7 @@
 export function GetLocalConfig() {
   return window['go']['service']['ConfigService']['GetLocalConfig']();
 }
+
+export function InitLocalConfig() {
+  return window['go']['service']['ConfigService']['InitLocalConfig']();
+}

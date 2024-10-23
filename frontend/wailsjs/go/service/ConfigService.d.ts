@@ -3,3 +3,5 @@
 import {common} from '../models';
 
 export function GetLocalConfig():Promise<common.LocalConfig>;
+
+export function InitLocalConfig():Promise<void>;

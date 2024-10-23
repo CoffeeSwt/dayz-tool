@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { Button } from '@/components/ui/button'
 import { Greet } from '../wailsjs/go/main/App'
-import { GetLocalConfig } from '../wailsjs/go/service/ConfigService'
+import { GetLocalConfig, InitLocalConfig } from '../wailsjs/go/service/ConfigService'
 import { ref } from 'vue'
 const data = ref('')
 const data1 = ref('')
@@ -13,12 +13,16 @@ const get = () => {
     console.log(res)
   })
 }
+const initConfig = () => {
+  InitLocalConfig()
+}
 
 
 </script>
 
 <template>
-  <Button @click="get">111</Button>
+  <Button @click="get">test</Button>
+  <Button @click="initConfig">init</Button>
   <div>{{ data }}</div>
   <div>{{ data1 }}</div>
 </template>
