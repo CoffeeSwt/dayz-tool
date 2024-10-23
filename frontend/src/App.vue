@@ -1,30 +1,7 @@
 <script setup lang="ts">
-import { Button } from '@/components/ui/button'
-import { Greet } from '../wailsjs/go/main/App'
-import { GetLocalConfig, InitLocalConfig } from '../wailsjs/go/service/ConfigService'
-import { ref } from 'vue'
-const data = ref('')
-const data1 = ref('')
-Greet('hello').then(res => {
-  data.value = res
-})
-const get = () => {
-  GetLocalConfig().then(res => {
-    console.log(res)
-  })
-}
-const initConfig = () => {
-  InitLocalConfig()
-}
-
 
 </script>
 
 <template>
-  <Button @click="get">test</Button>
-  <Button @click="initConfig">init</Button>
-  <div>{{ data }}</div>
-  <div>{{ data1 }}</div>
+  <RouterView></RouterView>
 </template>
-
-<style scoped></style>

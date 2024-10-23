@@ -4,6 +4,7 @@ import autoprefixer from 'autoprefixer'
 
 import tailwind from 'tailwindcss'
 import { defineConfig } from 'vite'
+import UnoCSS from 'unocss/vite'
 
 export default defineConfig({
   css: {
@@ -11,7 +12,7 @@ export default defineConfig({
       plugins: [tailwind(), autoprefixer()],
     },
   },
-  plugins: [vue()],
+  plugins: [vue(), UnoCSS(),],
   resolve: {
     alias: {
       '@': path.resolve(__dirname, './src'),
