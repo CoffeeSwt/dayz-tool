@@ -1,11 +1,12 @@
 package global
 
 import (
-	"go.uber.org/zap"
+	"dayz-tool/logger"
+
 	"gorm.io/gorm"
 )
 
 var (
 	DT_DB     *gorm.DB
-	DT_Logger *zap.Logger
+	DT_Logger *logger.Logger
 )

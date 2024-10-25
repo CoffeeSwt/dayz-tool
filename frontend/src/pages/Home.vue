@@ -1,18 +1,14 @@
 <script setup lang="ts">
 import Layouts from '@/pages/Layouts/index.vue'
-import { WindowToggleMaximise } from '../../wailsjs/runtime/runtime'
 import { useColorMode } from '@vueuse/core';
 const theme = useColorMode()
 
-const full = () => {
-    WindowToggleMaximise()
-}
+
 
 </script>
 
 <template>
     <Layouts>
-        <div size-10 @click="full">full</div>
         <div size-20 class="bg-primary text-primary-foreground">{{ theme }}</div>
         <div size-20 class="bg-primary text-primary-foreground">primary</div>
         <div size-20 class="bg-secondary text-secondary-foreground">secondary</div>

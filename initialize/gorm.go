@@ -1,38 +1,35 @@
 package initialize
 
 import (
-	"dayz-tool/global"
-	"dayz-tool/model/common"
+	"context"
 	"os"
 	"path/filepath"
 
 	"github.com/glebarez/sqlite"
-	"go.uber.org/zap"
 	"gorm.io/gorm"
 )
 
-func initGormDataBaseConnection() {
+type DBManager struct {
+	ctx context.Context
+	db  *gorm.DB
+}
+
+func NewGlobalDB(ctx context.Context) *DBManager {
 	dbpath := getDataSource()
 	db, err := gorm.Open(sqlite.Open(dbpath), &gorm.Config{})
 	if err != nil {
 		panic("failed to connect database")
-	} else {
-		global.DT_DB = db
-
 	}
-
+	return &DBManager{ctx: ctx, db: db}
 }
 
-func registerTables() {
-	db := global.DT_DB
-	err := db.AutoMigrate(
-		common.LocalConfig{},
-	)
+func (d *DBManager) MigrateTable(tables ...any) {
+	//common.LocalConfig{}
+	err := d.db.AutoMigrate(tables...)
 	if err != nil {
-		global.DT_Logger.Error("register table failed", zap.Error(err))
+		// global.DT_Logger.Error("register table failed", zap.Error(err))
 		os.Exit(0)
 	}
-	//global.DT_Logger.Info("register table success")
 }
 
 // 获取db文件夹路径
@@ -42,6 +39,5 @@ func getDataSource() string {
 	if err := os.MkdirAll(dataDir, os.FileMode(0755)); err != nil {
 		return "dayz-tool.db"
 	}
-
 	return filepath.Join(dataDir, "dayz-tool.db")
 }

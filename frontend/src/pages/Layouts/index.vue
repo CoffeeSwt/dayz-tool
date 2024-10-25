@@ -4,7 +4,7 @@ import Side from './Side.vue';
 </script>
 
 <template>
-    <div w-full h-screen flex flex-col overflow-hidden class="bg-background text-primary-foreground">
+    <div w-full h-screen flex flex-col overflow-hidden class="bg-background text-foreground">
         <div w-full h-20 flex-shrink-0>
             <Header></Header>
         </div>

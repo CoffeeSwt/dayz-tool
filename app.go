@@ -2,6 +2,7 @@ package main
 
 import (
 	"context"
+	"dayz-tool/initialize"
 	"fmt"
 )
 
@@ -19,6 +20,7 @@ func NewApp() *App {
 // so we can call the runtime methods
 func (a *App) startup(ctx context.Context) {
 	a.ctx = ctx
+	initialize.Init(ctx)
 }
 
 // Greet returns a greeting for the given name
