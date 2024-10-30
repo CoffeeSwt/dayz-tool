@@ -14,6 +14,10 @@ func Init(ctx context.Context) {
 	global.DT_Logger = logger.NewLogger(ctx)
 
 	//MigrateTable
-	dBManager.MigrateTable(&common.LocalConfig{})
-
+	err := dBManager.MigrateTable(
+		&common.ServerStartConfig{},
+	)
+	if err != nil {
+		global.DT_Logger.Error(err.Error())
+	}
 }

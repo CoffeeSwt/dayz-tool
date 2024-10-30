@@ -23,13 +23,8 @@ func NewGlobalDB(ctx context.Context) *DBManager {
 	return &DBManager{ctx: ctx, db: db}
 }
 
-func (d *DBManager) MigrateTable(tables ...any) {
-	//common.LocalConfig{}
-	err := d.db.AutoMigrate(tables...)
-	if err != nil {
-		// global.DT_Logger.Error("register table failed", zap.Error(err))
-		os.Exit(0)
-	}
+func (d *DBManager) MigrateTable(tables ...any) error {
+	return d.db.AutoMigrate(tables...)
 }
 
 // 获取db文件夹路径

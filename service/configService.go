@@ -8,15 +8,12 @@ import (
 type ConfigService struct {
 }
 
-func (c *ConfigService) GetLocalConfig() (config common.LocalConfig) {
-	global.DT_DB.Model(&common.LocalConfig{}).First(&config)
+func (c *ConfigService) GetServerStartConfig() (config common.ServerStartConfig) {
+	global.DT_DB.Model(&common.ServerStartConfig{}).First(&config)
 	return config
 }
 
-func (c *ConfigService) InitLocalConfig() {
-	config := &common.LocalConfig{
-		Theme: "light",
-	}
+func (c *ConfigService) InitServerStartConfig() {
+	config := &common.ServerStartConfig{}
 	global.DT_DB.Create(config)
-
 }

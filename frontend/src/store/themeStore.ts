@@ -6,7 +6,7 @@ export const useThemeStore = defineStore('theme', () => {
     const theme = ref('light')
     function init() {
         const res = localStorage.getItem('vueuse-color-scheme')
-        if (res == null) {
+        if (res == null || res == 'auto') {
             const mode = useColorMode()
             mode.value = 'light'
         } else {
