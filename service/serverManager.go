@@ -9,8 +9,17 @@ import (
 	"time"
 )
 
+func NewServerManager() *ServerManager {
+	return &ServerManager{}
+}
+
 type ServerManager struct {
+	ctx    *context.Context
 	cancel context.CancelFunc
+}
+
+func (s *ServerManager) BindCtx(ctx *context.Context) {
+	s.ctx = ctx
 }
 
 func (s *ServerManager) StartServer() {
@@ -20,6 +29,7 @@ func (s *ServerManager) StartServer() {
 	ctx, cancel := context.WithCancel(context.Background())
 	s.cancel = cancel
 	wg.Add(1)
+	//启动一个协程
 	go s.runExe(cmd, ctx, wg)
 }
 
