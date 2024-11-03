@@ -34,7 +34,10 @@ export default defineConfig({
             'light-background-1': '#f0f3f6',
             'light-hover-background-1': '#e4e8ec',
             'light-text-background-1': '#737b89',
-
+             //light-background-2
+             'light-background-2': '#282f3c',
+             'light-hover-background-2': '#f3f4f6',
+             'light-text-background-2': '#030712',
 
             //dark background
             'dark-background': '#13131a',
@@ -45,6 +48,10 @@ export default defineConfig({
             'dark-background-1': '#1a1a21',
             'dark-hover-background-1': '#27272e',
             'dark-text-background-1': '#a9a9ab',
+             //dark-background-2
+             'dark-background-2': '#030712',
+             'dark-hover-background-2': '#1f2937',
+             'dark-text-background-2': '#f9fafb',
 
 
         }
