@@ -3,7 +3,10 @@ package service
 import (
 	"dayz-tool/global"
 	"dayz-tool/model/common"
+	"errors"
 	"os/exec"
+
+	"gorm.io/gorm"
 )
 
 func NewConfigService() *ConfigService {
@@ -11,13 +14,17 @@ func NewConfigService() *ConfigService {
 }
 
 type ConfigService struct {
-	config *common.ServerStartConfig
 }
 
 func (c *ConfigService) GetServerStartConfig() (config *common.ServerStartConfig) {
-	global.DT_DB.Model(&common.ServerStartConfig{}).First(&config)
-	c.config = config
-	return config
+	result := global.DT_DB.Model(&common.ServerStartConfig{}).First(&config)
+	if !errors.Is(result.Error, gorm.ErrRecordNotFound) {
+		return config
+	}
+	defaultConfig := &common.ServerStartConfig{
+		DayzServerPath: "",
+	}
+	return defaultConfig
 }
 
 func (c *ConfigService) GetStartCommand() (cmd *exec.Cmd) {
@@ -26,16 +33,16 @@ func (c *ConfigService) GetStartCommand() (cmd *exec.Cmd) {
 	return exec.Command(config.DayzServerPath)
 }
 
-func (c *ConfigService) getPortParm() (portParm string) {
-	return "-port=" + c.config.Port
+func (c *ConfigService) getPortParm(config common.ServerStartConfig) (portParm string) {
+	return "-port=" + config.Port
 }
 
-func (c *ConfigService) getClientModsParm() (clientModsParm string) {
+func (c *ConfigService) getClientModsParm(config common.ServerStartConfig) (clientModsParm string) {
 	base := "-mod="
 	return base
 }
 
-func (c *ConfigService) getServerModsParm() (serverModsParm string) {
+func (c *ConfigService) getServerModsParm(config common.ServerStartConfig) (serverModsParm string) {
 	base := "-servermod="
 	return base
 }
