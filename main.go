@@ -30,7 +30,7 @@ func main() {
 		Frameless:        true,
 		BackgroundColour: &options.RGBA{R: 255, G: 255, B: 255, A: 1},
 		OnStartup:        app.startup,
-		Bind:             getBind(app, app.services),
+		Bind:             getBind(app),
 	})
 
 	if err != nil {
@@ -38,11 +38,9 @@ func main() {
 	}
 }
 
-func getBind(app *App, services []service.Service) []interface{} {
+func getBind(app *App) []interface{} {
 	binds := []interface{}{}
 	binds = append(binds, app)
-	for _, v := range services {
-		binds = append(binds, v)
-	}
+	binds = append(binds, service.InitService()...)
 	return binds
 }

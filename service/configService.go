@@ -1,7 +1,6 @@
 package service
 
 import (
-	"context"
 	"dayz-tool/global"
 	"dayz-tool/model/common"
 	"os/exec"
@@ -12,12 +11,7 @@ func NewConfigService() *ConfigService {
 }
 
 type ConfigService struct {
-	ctx    *context.Context
 	config *common.ServerStartConfig
-}
-
-func (c *ConfigService) BindCtx(ctx *context.Context) {
-	c.ctx = ctx
 }
 
 func (c *ConfigService) GetServerStartConfig() (config *common.ServerStartConfig) {

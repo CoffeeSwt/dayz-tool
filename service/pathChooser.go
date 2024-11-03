@@ -1,7 +1,6 @@
 package service
 
 import (
-	"context"
 	"dayz-tool/global"
 
 	"github.com/wailsapp/wails/v2/pkg/runtime"
@@ -12,15 +11,10 @@ func NewPathChooser() *PathChooser {
 }
 
 type PathChooser struct {
-	ctx *context.Context
-}
-
-func (p *PathChooser) BindCtx(ctx *context.Context) {
-	p.ctx = ctx
 }
 
 func (p *PathChooser) ChooseFile() string {
-	filePath, err := runtime.OpenFileDialog(*p.ctx, runtime.OpenDialogOptions{})
+	filePath, err := runtime.OpenFileDialog(*global.APP_Context, runtime.OpenDialogOptions{})
 	if err != nil {
 		global.DT_Logger.Info(err.Error())
 		return ""
@@ -30,7 +24,7 @@ func (p *PathChooser) ChooseFile() string {
 }
 
 func (p *PathChooser) ChooseFileFolder() string {
-	dirPath, err := runtime.OpenDirectoryDialog(*p.ctx, runtime.OpenDialogOptions{})
+	dirPath, err := runtime.OpenDirectoryDialog(*global.APP_Context, runtime.OpenDialogOptions{})
 	if err != nil {
 		global.DT_Logger.Info(err.Error())
 		return ""

@@ -14,12 +14,7 @@ func NewServerManager() *ServerManager {
 }
 
 type ServerManager struct {
-	ctx    *context.Context
 	cancel context.CancelFunc
-}
-
-func (s *ServerManager) BindCtx(ctx *context.Context) {
-	s.ctx = ctx
 }
 
 func (s *ServerManager) StartServer() {
