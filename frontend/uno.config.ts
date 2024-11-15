@@ -24,6 +24,8 @@ export default defineConfig({
     ],
     theme: {
         colors: {
+            //main-color
+            'main':'#329672',
 
             //light background
             'light-icon': '#030712',

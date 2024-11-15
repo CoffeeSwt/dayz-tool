@@ -12,7 +12,7 @@ import Side from './Side.vue';
             <div w-50 h-full flex-shrink-0>
                 <Side></Side>
             </div>
-            <div flex-grow-1>
+            <div flex-grow-1 p-2>
                 <slot></slot>
             </div>
         </div>
