@@ -9,7 +9,8 @@ themeStore.init()
 serverStartConfigStore.init()
 
 onMounted(() => {
-  document.body.style.fontFamily = `"${css.family}"`
+  //设置全局字体
+  document.documentElement.style.fontFamily = `"${css.family}"`
 })
 </script>
 
